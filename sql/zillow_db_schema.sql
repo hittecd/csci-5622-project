@@ -31,6 +31,11 @@ ALTER TABLE median_listing_price_condo DROP FOREIGN KEY median_listing_price_con
 ALTER TABLE median_listing_price_duplex_triplex DROP FOREIGN KEY median_listing_price_duplex_triplex_ibfk_1;
 ALTER TABLE median_listing_price_sfr DROP FOREIGN KEY median_listing_price_sfr_ibfk_1;
 
+ALTER TABLE median_listing_price_per_sqft_all_homes DROP FOREIGN KEY median_listing_price_per_sqft_all_homes_ibfk_1;
+ALTER TABLE median_listing_price_per_sqft_condo DROP FOREIGN KEY median_listing_price_per_sqft_condo_ibfk_1;
+ALTER TABLE median_listing_price_per_sqft_duplex_triplex DROP FOREIGN KEY median_listing_price_per_sqft_duplex_triplex_ibfk_1;
+ALTER TABLE median_listing_price_per_sqft_sfr DROP FOREIGN KEY median_listing_price_per_sqft_sfr_ibfk_1;
+
 # drop tables
 
 DROP TABLE IF EXISTS state;
@@ -130,4 +135,5 @@ CREATE TABLE zip (
 source median_listing_price_num_rooms.sql
 source median_listing_price_per_sqft_num_rooms.sql
 source median_listing_price_home_type.sql
+source median_listing_price_per_sqft_home_type.sql
 
