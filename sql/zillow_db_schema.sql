@@ -122,4 +122,5 @@ CREATE TABLE zip (
 
 # create median listing price tables
 source median_listing_price_num_rooms.sql
+source median_listing_price_per_sqft_num_rooms.sql
 
