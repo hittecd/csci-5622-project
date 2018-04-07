@@ -16,7 +16,6 @@ METRO_INDEX = 3
 COUNTY_NAME_INDEX = 4
 SIZE_RANK_INDEX = 5
 MEDIAN_LISTING_PRICE_DATA_MIN_INDEX = 6
-MEDIAN_LISTING_PRICE_DATA_MAX_INDEX = 104  # 98 columns of data
 
 INSERT_MEDIAN_LISTING_PRICE_TEMPLATE = "INSERT INTO {0} (zip_id, date_time, price) VALUES ({1}, \"{2}\", {3});"
 DELETE_MEDIAN_LISTING_PRICE_TEMPLATE = "DELETE FROM {0};"
@@ -58,7 +57,7 @@ class MedianListingPricePerSqftNumBedroomsDAO:
         # parse data lines
         data_lines = data_file.readlines()
 
-        date_fields = data_lines[0].replace('\"', '').split(',')[MEDIAN_LISTING_PRICE_DATA_MIN_INDEX:MEDIAN_LISTING_PRICE_DATA_MAX_INDEX]
+        date_fields = data_lines[0].replace('\"', '').split(',')[MEDIAN_LISTING_PRICE_DATA_MIN_INDEX:]
 
         for data_line in data_lines[1:]:
             # split data line
@@ -71,7 +70,7 @@ class MedianListingPricePerSqftNumBedroomsDAO:
             metro_data = data_line[METRO_INDEX]
             city_data = data_line[CITY_INDEX]
             median_listing_price_data = \
-                data_line[MEDIAN_LISTING_PRICE_DATA_MIN_INDEX:MEDIAN_LISTING_PRICE_DATA_MAX_INDEX]
+                data_line[MEDIAN_LISTING_PRICE_DATA_MIN_INDEX:]
 
             # get parent record objects
             state = self.state_dao.insert_data(state_data)

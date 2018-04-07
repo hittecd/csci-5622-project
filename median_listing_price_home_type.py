@@ -3,11 +3,10 @@ from datetime import date
 from database_manager import DatabaseManager
 
 
-MEDIAN_LISTING_PRICE_ONE_ROOM_TABLE = "median_listing_price_one_room"
-MEDIAN_LISTING_PRICE_TWO_ROOM_TABLE = "median_listing_price_two_room"
-MEDIAN_LISTING_PRICE_THREE_ROOM_TABLE = "median_listing_price_three_room"
-MEDIAN_LISTING_PRICE_FOUR_ROOM_TABLE = "median_listing_price_four_room"
-MEDIAN_LISTING_PRICE_FIVE_PLUS_ROOM_TABLE = "median_listing_price_five_plus_room"
+MEDIAN_LISTING_PRICE_ALL_HOMES_TABLE = "median_listing_price_all_homes"
+MEDIAN_LISTING_PRICE_CONDO_TABLE = "median_listing_price_condo"
+MEDIAN_LISTING_PRICE_DUPLEX_TRIPLEX_TABLE = "median_listing_price_duplex_triplex"
+MEDIAN_LISTING_PRICE_SFR_TABLE = "median_listing_price_sfr"
 
 ZIP_INDEX = 0
 CITY_INDEX = 1
@@ -21,7 +20,7 @@ INSERT_MEDIAN_LISTING_PRICE_TEMPLATE = "INSERT INTO {0} (zip_id, date_time, pric
 DELETE_MEDIAN_LISTING_PRICE_TEMPLATE = "DELETE FROM {0};"
 
 
-class MedianListingPriceNumBedroomsDAO:
+class MedianListingPriceHomeTypeDAO:
     @staticmethod
     def delete_data():
         # get connection to database
@@ -29,11 +28,10 @@ class MedianListingPriceNumBedroomsDAO:
         cursor = db_conn.cursor()
 
         # delete median listing price records across all tables
-        cursor.execute(DELETE_MEDIAN_LISTING_PRICE_TEMPLATE.format(MEDIAN_LISTING_PRICE_ONE_ROOM_TABLE))
-        cursor.execute(DELETE_MEDIAN_LISTING_PRICE_TEMPLATE.format(MEDIAN_LISTING_PRICE_TWO_ROOM_TABLE))
-        cursor.execute(DELETE_MEDIAN_LISTING_PRICE_TEMPLATE.format(MEDIAN_LISTING_PRICE_THREE_ROOM_TABLE))
-        cursor.execute(DELETE_MEDIAN_LISTING_PRICE_TEMPLATE.format(MEDIAN_LISTING_PRICE_FOUR_ROOM_TABLE))
-        cursor.execute(DELETE_MEDIAN_LISTING_PRICE_TEMPLATE.format(MEDIAN_LISTING_PRICE_FIVE_PLUS_ROOM_TABLE))
+        cursor.execute(DELETE_MEDIAN_LISTING_PRICE_TEMPLATE.format(MEDIAN_LISTING_PRICE_ALL_HOMES_TABLE))
+        cursor.execute(DELETE_MEDIAN_LISTING_PRICE_TEMPLATE.format(MEDIAN_LISTING_PRICE_CONDO_TABLE))
+        cursor.execute(DELETE_MEDIAN_LISTING_PRICE_TEMPLATE.format(MEDIAN_LISTING_PRICE_DUPLEX_TRIPLEX_TABLE))
+        cursor.execute(DELETE_MEDIAN_LISTING_PRICE_TEMPLATE.format(MEDIAN_LISTING_PRICE_SFR_TABLE))
 
         # commit transaction
         db_conn.commit()
@@ -100,39 +98,32 @@ class MedianListingPriceNumBedroomsDAO:
         cursor.close()
         db_conn.close()
 
-    def insert_median_listing_price_one_room_data(self):
+    def insert_median_listing_price_all_homes_data(self):
         data_file = open("data/Zip_MedianListingPrice_1Bedroom.csv", "r")
 
-        self.insert_median_listing_price_data(MEDIAN_LISTING_PRICE_ONE_ROOM_TABLE, data_file)
+        self.insert_median_listing_price_data(MEDIAN_LISTING_PRICE_ALL_HOMES_TABLE, data_file)
 
-    def insert_median_listing_price_two_room_data(self):
+    def insert_median_listing_price_condo_data(self):
         data_file = open("data/Zip_MedianListingPrice_2Bedroom.csv", "r")
 
-        self.insert_median_listing_price_data(MEDIAN_LISTING_PRICE_TWO_ROOM_TABLE, data_file)
+        self.insert_median_listing_price_data(MEDIAN_LISTING_PRICE_CONDO_TABLE, data_file)
 
-    def insert_median_listing_price_three_room_data(self):
+    def insert_median_listing_price_duplex_triplex_data(self):
         data_file = open("data/Zip_MedianListingPrice_3Bedroom.csv", "r")
 
-        self.insert_median_listing_price_data(MEDIAN_LISTING_PRICE_THREE_ROOM_TABLE, data_file)
+        self.insert_median_listing_price_data(MEDIAN_LISTING_PRICE_DUPLEX_TRIPLEX_TABLE, data_file)
 
-    def insert_median_listing_price_four_room_data(self):
+    def insert_median_listing_price_sfr_data(self):
         data_file = open("data/Zip_MedianListingPrice_4Bedroom.csv", "r")
 
-        self.insert_median_listing_price_data(MEDIAN_LISTING_PRICE_FOUR_ROOM_TABLE, data_file)
-
-    def insert_median_listing_price_five_plus_room_data(self):
-        data_file = open("data/Zip_MedianListingPrice_5BedroomOrMore.csv", "r")
-
-        self.insert_median_listing_price_data(MEDIAN_LISTING_PRICE_FIVE_PLUS_ROOM_TABLE, data_file)
+        self.insert_median_listing_price_data(MEDIAN_LISTING_PRICE_SFR_TABLE, data_file)
 
     def insert_data(self):
         # insert median listing price data
-        self.insert_median_listing_price_one_room_data()
+        self.insert_median_listing_price_all_homes_data()
 
-        self.insert_median_listing_price_two_room_data()
+        self.insert_median_listing_price_condo_data()
 
-        self.insert_median_listing_price_three_room_data()
+        self.insert_median_listing_price_duplex_triplex_data()
 
-        self.insert_median_listing_price_four_room_data()
-
-        self.insert_median_listing_price_five_plus_room_data()
+        self.insert_median_listing_price_sfr_data()

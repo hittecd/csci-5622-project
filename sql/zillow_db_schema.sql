@@ -15,15 +15,21 @@ ALTER TABLE zip DROP FOREIGN KEY zip_ibfk_4;
 
 
 ALTER TABLE median_listing_price_one_room DROP FOREIGN KEY median_listing_price_one_room_ibfk_1;
-
 ALTER TABLE median_listing_price_two_room DROP FOREIGN KEY median_listing_price_two_room_ibfk_1;
-
 ALTER TABLE median_listing_price_three_room DROP FOREIGN KEY median_listing_price_three_room_ibfk_1;
-
 ALTER TABLE median_listing_price_four_room DROP FOREIGN KEY median_listing_price_four_room_ibfk_1;
-
 ALTER TABLE median_listing_price_five_plus_room DROP FOREIGN KEY median_listing_price_five_plus_room_ibfk_1;
 
+ALTER TABLE median_listing_price_per_sqft_one_room DROP FOREIGN KEY median_listing_price_per_sqft_one_room_ibfk_1;
+ALTER TABLE median_listing_price_per_sqft_two_room DROP FOREIGN KEY median_listing_price_per_sqft_two_room_ibfk_1;
+ALTER TABLE median_listing_price_per_sqft_three_room DROP FOREIGN KEY median_listing_price_per_sqft_three_room_ibfk_1;
+ALTER TABLE median_listing_price_per_sqft_four_room DROP FOREIGN KEY median_listing_price_per_sqft_four_room_ibfk_1;
+ALTER TABLE median_listing_price_per_sqft_five_plus_room DROP FOREIGN KEY median_listing_price_per_sqft_five_plus_room_ibfk_1;
+
+ALTER TABLE median_listing_price_all_homes DROP FOREIGN KEY median_listing_price_all_homes_ibfk_1;
+ALTER TABLE median_listing_price_condo DROP FOREIGN KEY median_listing_price_condo_ibfk_1;
+ALTER TABLE median_listing_price_duplex_triplex DROP FOREIGN KEY median_listing_price_duplex_triplex_ibfk_1;
+ALTER TABLE median_listing_price_sfr DROP FOREIGN KEY median_listing_price_sfr_ibfk_1;
 
 # drop tables
 
@@ -123,4 +129,5 @@ CREATE TABLE zip (
 # create median listing price tables
 source median_listing_price_num_rooms.sql
 source median_listing_price_per_sqft_num_rooms.sql
+source median_listing_price_home_type.sql
 

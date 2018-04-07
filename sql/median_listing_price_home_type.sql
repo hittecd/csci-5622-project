@@ -1,15 +1,14 @@
 # drop tables
 
-DROP TABLE IF EXISTS median_listing_price_one_room;
-DROP TABLE IF EXISTS median_listing_price_two_room;
-DROP TABLE IF EXISTS median_listing_price_three_room;
-DROP TABLE IF EXISTS median_listing_price_four_room;
-DROP TABLE IF EXISTS median_listing_price_five_plus_room;
+DROP TABLE IF EXISTS median_listing_price_all_homes;
+DROP TABLE IF EXISTS median_listing_price_condo;
+DROP TABLE IF EXISTS median_listing_price_duplex_triplex;
+DROP TABLE IF EXISTS median_listing_price_sfr;
 
 
-# create median_listing_price_one_room table
+# create median_listing_price_all_homes table
 
-CREATE TABLE median_listing_price_one_room (
+CREATE TABLE median_listing_price_all_homes (
     id INT NOT NULL AUTO_INCREMENT,
     zip_id INT NOT NULL,
     date_time DATE NOT NULL,
@@ -21,9 +20,9 @@ CREATE TABLE median_listing_price_one_room (
 ) ENGINE=INNODB;
 
 
-# create median_listing_price_two_room table
+# create median_listing_price_condo table
 
-CREATE TABLE median_listing_price_two_room (
+CREATE TABLE median_listing_price_condo (
     id INT NOT NULL AUTO_INCREMENT,
     zip_id INT NOT NULL,
     date_time DATE NOT NULL,
@@ -35,9 +34,9 @@ CREATE TABLE median_listing_price_two_room (
 ) ENGINE=INNODB;
 
 
-# create median_listing_price_three_room table
+# create median_listing_price_duplex_triplex table
 
-CREATE TABLE median_listing_price_three_room (
+CREATE TABLE median_listing_price_duplex_triplex (
     id INT NOT NULL AUTO_INCREMENT,
     zip_id INT NOT NULL,
     date_time DATE NOT NULL,
@@ -49,23 +48,9 @@ CREATE TABLE median_listing_price_three_room (
 ) ENGINE=INNODB;
 
 
-# create median_listing_price_four_room table
+# create median_listing_price_sfr table
 
-CREATE TABLE median_listing_price_four_room (
-    id INT NOT NULL AUTO_INCREMENT,
-    zip_id INT NOT NULL,
-    date_time DATE NOT NULL,
-    price DECIMAL(12, 2) NULL,
-    PRIMARY KEY(id),
-    FOREIGN KEY (zip_id)
-        REFERENCES zip(id)
-        ON DELETE CASCADE
-) ENGINE=INNODB;
-
-
-# create median_listing_price_five_plus_room table
-
-CREATE TABLE median_listing_price_five_plus_room (
+CREATE TABLE median_listing_price_sfr (
     id INT NOT NULL AUTO_INCREMENT,
     zip_id INT NOT NULL,
     date_time DATE NOT NULL,
