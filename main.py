@@ -8,6 +8,7 @@ from median_listing_price_num_rooms import MedianListingPriceNumBedroomsDAO
 from median_listing_price_per_sqft_num_rooms import MedianListingPricePerSqftNumBedroomsDAO
 from median_listing_price_home_type import MedianListingPriceHomeTypeDAO
 from median_listing_price_per_sqft_home_type import MedianListingPricePerSqftHomeTypeDAO
+from listing_price_cut_season_adj_home_type import ListingPriceCutSeasonAdjHomeTypeDAO
 
 
 if __name__ == "__main__":
@@ -21,7 +22,8 @@ if __name__ == "__main__":
     median_listing_price_num_bedrooms_dao = MedianListingPriceNumBedroomsDAO(state_dao, county_dao, metro_dao, city_dao, zip_dao)
     median_listing_price_per_sqft_num_bedrooms_dao = MedianListingPricePerSqftNumBedroomsDAO(state_dao, county_dao, metro_dao, city_dao, zip_dao)
     median_listing_price_home_type_dao = MedianListingPriceHomeTypeDAO(state_dao, county_dao, metro_dao, city_dao, zip_dao)
-    median_listing_price_per_sqft_home_type_dao = MedianListingPriceHomeTypeDAO(state_dao, county_dao, metro_dao, city_dao, zip_dao)
+    median_listing_price_per_sqft_home_type_dao = MedianListingPricePerSqftHomeTypeDAO(state_dao, county_dao, metro_dao, city_dao, zip_dao)
+    listing_price_cut_season_adj_home_type_dao = ListingPriceCutSeasonAdjHomeTypeDAO(state_dao, county_dao, metro_dao, city_dao, zip_dao)
 
     # delete all records
     state_dao.delete_data()
@@ -34,10 +36,12 @@ if __name__ == "__main__":
     median_listing_price_per_sqft_num_bedrooms_dao.delete_data()
     median_listing_price_home_type_dao.delete_data()
     median_listing_price_per_sqft_home_type_dao.delete_data()
+    listing_price_cut_season_adj_home_type_dao.delete_data()
 
     # insert records
     median_listing_price_num_bedrooms_dao.insert_data()
     median_listing_price_per_sqft_num_bedrooms_dao.insert_data()
     median_listing_price_home_type_dao.insert_data()
     median_listing_price_per_sqft_home_type_dao.insert_data()
+    listing_price_cut_season_adj_home_type_dao.insert_data()
 

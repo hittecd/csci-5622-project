@@ -1,7 +1,7 @@
 from database_manager import DatabaseManager
 
 
-INSERT_ZIP_TEMPLATE = "INSERT INTO zip (city_id, county_id, metro_id, state_id, zip_code) VALUES ({0}, {1}, {2}, {3}, {4});"
+INSERT_ZIP_TEMPLATE = "INSERT INTO zip (city_id, county_id, metro_id, state_id, zip_code) VALUES ({0}, {1}, {2}, {3}, \"{4}\");"
 DELETE_ZIPS_TEMPLATE = "DELETE FROM zip;"
 SELECT_ZIPS_TEMPLATE = "SELECT id, city_id, county_id, metro_id, state_id, zip_code FROM zip;"
 
@@ -85,7 +85,7 @@ class ZipDAO:
 
         # create Zip objects from records
         for (id, city_id, county_id, metro_id, state_id, zip_code) in cursor:
-            self.zip_data[int(id)] = Zip(int(id), int(city_id), int(county_id), int(metro_id), int(state_id), int(zip_code))
+            self.zip_data[int(id)] = Zip(int(id), int(city_id), int(county_id), int(metro_id), int(state_id), zip_code)
 
         # close connection and cursor
         cursor.close()

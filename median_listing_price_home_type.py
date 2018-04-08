@@ -62,7 +62,7 @@ class MedianListingPriceHomeTypeDAO:
             data_line = data_line.replace('\"', '').split(',')
 
             # get record fields from data line
-            zip_data = int(data_line[ZIP_INDEX])
+            zip_data = data_line[ZIP_INDEX]
             state_data = data_line[STATE_INDEX]
             county_data = data_line[COUNTY_NAME_INDEX]
             metro_data = data_line[METRO_INDEX]
@@ -99,22 +99,22 @@ class MedianListingPriceHomeTypeDAO:
         db_conn.close()
 
     def insert_median_listing_price_all_homes_data(self):
-        data_file = open("data/Zip_MedianListingPrice_1Bedroom.csv", "r")
+        data_file = open("data/Zip_MedianListingPrice_AllHomes.csv", "r")
 
         self.insert_median_listing_price_data(MEDIAN_LISTING_PRICE_ALL_HOMES_TABLE, data_file)
 
     def insert_median_listing_price_condo_data(self):
-        data_file = open("data/Zip_MedianListingPrice_2Bedroom.csv", "r")
+        data_file = open("data/Zip_MedianListingPrice_CondoCoop.csv", "r")
 
         self.insert_median_listing_price_data(MEDIAN_LISTING_PRICE_CONDO_TABLE, data_file)
 
     def insert_median_listing_price_duplex_triplex_data(self):
-        data_file = open("data/Zip_MedianListingPrice_3Bedroom.csv", "r")
+        data_file = open("data/Zip_MedianListingPrice_DuplexTriplex.csv", "r")
 
         self.insert_median_listing_price_data(MEDIAN_LISTING_PRICE_DUPLEX_TRIPLEX_TABLE, data_file)
 
     def insert_median_listing_price_sfr_data(self):
-        data_file = open("data/Zip_MedianListingPrice_4Bedroom.csv", "r")
+        data_file = open("data/Zip_MedianListingPrice_Sfr.csv", "r")
 
         self.insert_median_listing_price_data(MEDIAN_LISTING_PRICE_SFR_TABLE, data_file)
 

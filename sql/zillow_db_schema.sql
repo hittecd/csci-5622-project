@@ -36,6 +36,10 @@ ALTER TABLE median_listing_price_per_sqft_condo DROP FOREIGN KEY median_listing_
 ALTER TABLE median_listing_price_per_sqft_duplex_triplex DROP FOREIGN KEY median_listing_price_per_sqft_duplex_triplex_ibfk_1;
 ALTER TABLE median_listing_price_per_sqft_sfr DROP FOREIGN KEY median_listing_price_per_sqft_sfr_ibfk_1;
 
+ALTER TABLE listing_price_cut_season_adj_all_homes DROP FOREIGN KEY listing_price_cut_season_adj_all_homes_ibfk_1;
+ALTER TABLE listing_price_cut_season_adj_condo DROP FOREIGN KEY listing_price_cut_season_adj_condo_ibfk_1;
+ALTER TABLE listing_price_cut_season_adj_sfr DROP FOREIGN KEY listing_price_cut_season_adj_sfr_ibfk_1;
+
 # drop tables
 
 DROP TABLE IF EXISTS state;
@@ -113,9 +117,9 @@ CREATE TABLE zip (
     county_id INT NOT NULL,
     metro_id INT NOT NULL,
     state_id INT NOT NULL,
-    zip_code INT NOT NULL,
+    zip_code VARCHAR(5) NOT NULL,
     PRIMARY KEY(id),
-    UNIQUE INDEX(zip_code),
+    UNIQUE INDEX(city_id, county_id, metro_id, state_id, zip_code),
     FOREIGN KEY (city_id)
         REFERENCES city(id)
         ON DELETE CASCADE,
@@ -136,4 +140,5 @@ source median_listing_price_num_rooms.sql
 source median_listing_price_per_sqft_num_rooms.sql
 source median_listing_price_home_type.sql
 source median_listing_price_per_sqft_home_type.sql
+source listing_price_cut_season_adj_home_type.sql
 

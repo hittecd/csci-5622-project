@@ -64,7 +64,7 @@ class MedianListingPriceNumBedroomsDAO:
             data_line = data_line.replace('\"', '').split(',')
 
             # get record fields from data line
-            zip_data = int(data_line[ZIP_INDEX])
+            zip_data = data_line[ZIP_INDEX]
             state_data = data_line[STATE_INDEX]
             county_data = data_line[COUNTY_NAME_INDEX]
             metro_data = data_line[METRO_INDEX]

@@ -62,7 +62,7 @@ class MedianListingPricePerSqftHomeTypeDAO:
             data_line = data_line.replace('\"', '').split(',')
 
             # get record fields from data line
-            zip_data = int(data_line[ZIP_INDEX])
+            zip_data = data_line[ZIP_INDEX]
             state_data = data_line[STATE_INDEX]
             county_data = data_line[COUNTY_NAME_INDEX]
             metro_data = data_line[METRO_INDEX]
@@ -89,7 +89,7 @@ class MedianListingPricePerSqftHomeTypeDAO:
                 else:
                     median_listing_price = float(median_listing_price)
 
-                cursor.execute(INSERT_MEDIAN_LISTING_PRICE_TEMPLATE.format(table, zip_code.zip_id, date_time.isoformat(), median_listing_price_per_sqft))
+                cursor.execute(INSERT_MEDIAN_LISTING_PRICE_TEMPLATE.format(table, zip_code.zip_id, date_time.isoformat(), median_listing_price))
 
         # commit transaction
         db_conn.commit()
@@ -99,22 +99,22 @@ class MedianListingPricePerSqftHomeTypeDAO:
         db_conn.close()
 
     def insert_median_listing_price_per_sqft_all_homes_data(self):
-        data_file = open("data/Zip_MedianListingPrice_1Bedroom.csv", "r")
+        data_file = open("data/Zip_MedianListingPricePerSqft_AllHomes.csv", "r")
 
         self.insert_median_listing_price_per_sqft_data(MEDIAN_LISTING_PRICE_PER_SQFT_ALL_HOMES_TABLE, data_file)
 
     def insert_median_listing_price_per_sqft_condo_data(self):
-        data_file = open("data/Zip_MedianListingPrice_2Bedroom.csv", "r")
+        data_file = open("data/Zip_MedianListingPricePerSqft_CondoCoop.csv", "r")
 
         self.insert_median_listing_price_per_sqft_data(MEDIAN_LISTING_PRICE_PER_SQFT_CONDO_TABLE, data_file)
 
     def insert_median_listing_price_per_sqft_duplex_triplex_data(self):
-        data_file = open("data/Zip_MedianListingPrice_3Bedroom.csv", "r")
+        data_file = open("data/Zip_MedianListingPricePerSqft_DuplexTriplex.csv", "r")
 
         self.insert_median_listing_price_per_sqft_data(MEDIAN_LISTING_PRICE_PER_SQFT_DUPLEX_TRIPLEX_TABLE, data_file)
 
     def insert_median_listing_price_per_sqft_sfr_data(self):
-        data_file = open("data/Zip_MedianListingPrice_4Bedroom.csv", "r")
+        data_file = open("data/Zip_MedianListingPricePerSqft_Sfr.csv", "r")
 
         self.insert_median_listing_price_per_sqft_data(MEDIAN_LISTING_PRICE_PER_SQFT_SFR_TABLE, data_file)
 
