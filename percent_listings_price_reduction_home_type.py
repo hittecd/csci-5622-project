@@ -15,7 +15,7 @@ METRO_INDEX = 5
 SIZE_RANK_INDEX = 6
 PERCENT_LISTINGS_PRICE_REDUCTION_DATA_MIN_INDEX = 7
 
-INSERT_PERCENT_LISTINGS_PRICE_REDUCTION_TEMPLATE = "INSERT INTO {0} (zip_id, date_time, price) VALUES ({1}, \"{2}\", {3});"
+INSERT_PERCENT_LISTINGS_PRICE_REDUCTION_TEMPLATE = "INSERT INTO {0} (zip_id, date_time, percent) VALUES ({1}, \"{2}\", {3});"
 DELETE_PERCENT_LISTINGS_PRICE_REDUCTION_TEMPLATE = "DELETE FROM {0};"
 
 
@@ -26,7 +26,7 @@ class PercentListingsPriceReductionHomeTypeDAO:
         db_conn = DatabaseManager.get_connection()
         cursor = db_conn.cursor()
 
-        # delete median median price records across all tables
+        # delete listings price reduction records across all tables
         cursor.execute(DELETE_PERCENT_LISTINGS_PRICE_REDUCTION_TEMPLATE.format(PERCENT_LISTINGS_PRICE_REDUCTION_ALL_HOMES_TABLE))
         cursor.execute(DELETE_PERCENT_LISTINGS_PRICE_REDUCTION_TEMPLATE.format(PERCENT_LISTINGS_PRICE_REDUCTION_CONDO_TABLE))
         cursor.execute(DELETE_PERCENT_LISTINGS_PRICE_REDUCTION_TEMPLATE.format(PERCENT_LISTINGS_PRICE_REDUCTION_SFR_TABLE))
@@ -75,13 +75,13 @@ class PercentListingsPriceReductionHomeTypeDAO:
             city = self.city_dao.insert_data(county.county_id, metro.metro_id, state.state_id, city_data)
             zip_code = self.zip_dao.insert_data(city.city_id, county.county_id, metro.metro_id, state.state_id, zip_data)
 
-            # insert median listing price records
+            # insert listings price reduction records
             for date_time, median_price_cut in zip(date_fields, median_price_cut_data):
                 # format date
                 date_time = date_time.split('-')
                 date_time = date(int(date_time[0]), int(date_time[1]), 1)  # MM/1/YYYY
 
-                # format median listing price
+                # format listings price reduction
                 if median_price_cut == '':
                     median_price_cut = "NULL"
                 else:
@@ -112,7 +112,7 @@ class PercentListingsPriceReductionHomeTypeDAO:
         self.insert_percent_listings_price_reduction_data(PERCENT_LISTINGS_PRICE_REDUCTION_SFR_TABLE, data_file)
 
     def insert_data(self):
-        # insert median price cut data
+        # insert listings price reduction data
         self.insert_percent_listings_price_reduction_all_homes_data()
 
         self.insert_percent_listings_price_reduction_condo_data()

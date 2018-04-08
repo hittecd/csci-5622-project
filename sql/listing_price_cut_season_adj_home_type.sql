@@ -11,7 +11,7 @@ CREATE TABLE listing_price_cut_season_adj_all_homes (
     id INT NOT NULL AUTO_INCREMENT,
     zip_id INT NOT NULL,
     date_time DATE NOT NULL,
-    price DECIMAL(12, 2) NULL,
+    price_cut DECIMAL(12, 2) NULL,
     PRIMARY KEY(id),
     FOREIGN KEY (zip_id)
         REFERENCES zip(id)
@@ -25,7 +25,7 @@ CREATE TABLE listing_price_cut_season_adj_condo (
     id INT NOT NULL AUTO_INCREMENT,
     zip_id INT NOT NULL,
     date_time DATE NOT NULL,
-    price DECIMAL(12, 2) NULL,
+    price_cut DECIMAL(12, 2) NULL,
     PRIMARY KEY(id),
     FOREIGN KEY (zip_id)
         REFERENCES zip(id)
@@ -39,7 +39,7 @@ CREATE TABLE listing_price_cut_season_adj_sfr (
     id INT NOT NULL AUTO_INCREMENT,
     zip_id INT NOT NULL,
     date_time DATE NOT NULL,
-    price DECIMAL(12, 2) NULL,
+    price_cut DECIMAL(12, 2) NULL,
     PRIMARY KEY(id),
     FOREIGN KEY (zip_id)
         REFERENCES zip(id)

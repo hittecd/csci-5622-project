@@ -15,7 +15,7 @@ METRO_INDEX = 5
 SIZE_RANK_INDEX = 6
 MEDIAN_PRICE_CUT_DATA_MIN_INDEX = 7
 
-INSERT_MEDIAN_PRICE_CUT_TEMPLATE = "INSERT INTO {0} (zip_id, date_time, price) VALUES ({1}, \"{2}\", {3});"
+INSERT_MEDIAN_PRICE_CUT_TEMPLATE = "INSERT INTO {0} (zip_id, date_time, price_cut) VALUES ({1}, \"{2}\", {3});"
 DELETE_MEDIAN_PRICE_CUT_TEMPLATE = "DELETE FROM {0};"
 
 
@@ -26,7 +26,7 @@ class MedianPriceCutDollarHomeTypeDAO:
         db_conn = DatabaseManager.get_connection()
         cursor = db_conn.cursor()
 
-        # delete median median price records across all tables
+        # delete price cut records across all tables
         cursor.execute(DELETE_MEDIAN_PRICE_CUT_TEMPLATE.format(MEDIAN_PRICE_CUT_ALL_HOMES_TABLE))
         cursor.execute(DELETE_MEDIAN_PRICE_CUT_TEMPLATE.format(MEDIAN_PRICE_CUT_CONDO_TABLE))
         cursor.execute(DELETE_MEDIAN_PRICE_CUT_TEMPLATE.format(MEDIAN_PRICE_CUT_SFR_TABLE))
@@ -75,13 +75,13 @@ class MedianPriceCutDollarHomeTypeDAO:
             city = self.city_dao.insert_data(county.county_id, metro.metro_id, state.state_id, city_data)
             zip_code = self.zip_dao.insert_data(city.city_id, county.county_id, metro.metro_id, state.state_id, zip_data)
 
-            # insert median listing price records
+            # insert median price cut records
             for date_time, median_price_cut in zip(date_fields, median_price_cut_data):
                 # format date
                 date_time = date_time.split('-')
                 date_time = date(int(date_time[0]), int(date_time[1]), 1)  # MM/1/YYYY
 
-                # format median listing price
+                # format median price cut
                 if median_price_cut == '':
                     median_price_cut = "NULL"
                 else:

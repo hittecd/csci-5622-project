@@ -1,16 +1,16 @@
 # drop tables
 
-DROP TABLE IF EXISTS percent_homes_values_increasing;
-DROP TABLE IF EXISTS percent_homes_values_decreasing;
+DROP TABLE IF EXISTS inventory_measure;
+DROP TABLE IF EXISTS inventory_measure_ssa;
 
 
-# create percent_homes_values_increasing table
+# create inventory_measure table
 
-CREATE TABLE percent_homes_values_increasing (
+CREATE TABLE inventory_measure (
     id INT NOT NULL AUTO_INCREMENT,
     zip_id INT NOT NULL,
     date_time DATE NOT NULL,
-    percent DECIMAL(12, 2) NULL,
+    inventory INT NULL,
     PRIMARY KEY(id),
     FOREIGN KEY (zip_id)
         REFERENCES zip(id)
@@ -18,16 +18,15 @@ CREATE TABLE percent_homes_values_increasing (
 ) ENGINE=INNODB;
 
 
-# create percent_homes_values_decreasing table
+# create inventory_measure_ssa table
 
-CREATE TABLE percent_homes_values_decreasing (
+CREATE TABLE inventory_measure_ssa (
     id INT NOT NULL AUTO_INCREMENT,
     zip_id INT NOT NULL,
     date_time DATE NOT NULL,
-    percent DECIMAL(12, 2) NULL,
+    inventory INT NULL,
     PRIMARY KEY(id),
     FOREIGN KEY (zip_id)
         REFERENCES zip(id)
         ON DELETE CASCADE
 ) ENGINE=INNODB;
-

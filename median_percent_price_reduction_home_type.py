@@ -15,7 +15,7 @@ METRO_INDEX = 5
 SIZE_RANK_INDEX = 6
 MEDIAN_PERCENT_PRICE_REDUCTION_DATA_MIN_INDEX = 7
 
-INSERT_MEDIAN_PERCENT_PRICE_REDUCTION_TEMPLATE = "INSERT INTO {0} (zip_id, date_time, price) VALUES ({1}, \"{2}\", {3});"
+INSERT_MEDIAN_PERCENT_PRICE_REDUCTION_TEMPLATE = "INSERT INTO {0} (zip_id, date_time, percent) VALUES ({1}, \"{2}\", {3});"
 DELETE_MEDIAN_PERCENT_PRICE_REDUCTION_TEMPLATE = "DELETE FROM {0};"
 
 
@@ -26,7 +26,7 @@ class MedianPercentPriceReductionHomeTypeDAO:
         db_conn = DatabaseManager.get_connection()
         cursor = db_conn.cursor()
 
-        # delete median median price records across all tables
+        # delete percent price reduction records across all tables
         cursor.execute(DELETE_MEDIAN_PERCENT_PRICE_REDUCTION_TEMPLATE.format(MEDIAN_PERCENT_PRICE_REDUCTION_ALL_HOMES_TABLE))
         cursor.execute(DELETE_MEDIAN_PERCENT_PRICE_REDUCTION_TEMPLATE.format(MEDIAN_PERCENT_PRICE_REDUCTION_CONDO_TABLE))
         cursor.execute(DELETE_MEDIAN_PERCENT_PRICE_REDUCTION_TEMPLATE.format(MEDIAN_PERCENT_PRICE_REDUCTION_SFR_TABLE))
@@ -65,7 +65,7 @@ class MedianPercentPriceReductionHomeTypeDAO:
             county_data = data_line[COUNTY_NAME_INDEX]
             metro_data = data_line[METRO_INDEX]
             city_data = data_line[CITY_INDEX]
-            median_price_cut_data = \
+            percent_price_reduction_data = \
                 data_line[MEDIAN_PERCENT_PRICE_REDUCTION_DATA_MIN_INDEX:]
 
             # get parent record objects
@@ -75,19 +75,19 @@ class MedianPercentPriceReductionHomeTypeDAO:
             city = self.city_dao.insert_data(county.county_id, metro.metro_id, state.state_id, city_data)
             zip_code = self.zip_dao.insert_data(city.city_id, county.county_id, metro.metro_id, state.state_id, zip_data)
 
-            # insert median listing price records
-            for date_time, median_price_cut in zip(date_fields, median_price_cut_data):
+            # insert percent price reduction records
+            for date_time, percent_price_reduction in zip(date_fields, percent_price_reduction_data):
                 # format date
                 date_time = date_time.split('-')
                 date_time = date(int(date_time[0]), int(date_time[1]), 1)  # MM/1/YYYY
 
-                # format median listing price
-                if median_price_cut == '':
-                    median_price_cut = "NULL"
+                # format percent price reduction
+                if percent_price_reduction == '':
+                    percent_price_reduction = "NULL"
                 else:
-                    median_price_cut = float(median_price_cut)
+                    percent_price_reduction = float(percent_price_reduction)
 
-                cursor.execute(INSERT_MEDIAN_PERCENT_PRICE_REDUCTION_TEMPLATE.format(table, zip_code.zip_id, date_time.isoformat(), median_price_cut))
+                cursor.execute(INSERT_MEDIAN_PERCENT_PRICE_REDUCTION_TEMPLATE.format(table, zip_code.zip_id, date_time.isoformat(), percent_price_reduction))
 
         # commit transaction
         db_conn.commit()
@@ -112,7 +112,7 @@ class MedianPercentPriceReductionHomeTypeDAO:
         self.insert_median_percent_price_reduction_data(MEDIAN_PERCENT_PRICE_REDUCTION_SFR_TABLE, data_file)
 
     def insert_data(self):
-        # insert median price cut data
+        # insert percent price reduction data
         self.insert_median_percent_price_reduction_all_homes_data()
 
         self.insert_median_percent_price_reduction_condo_data()

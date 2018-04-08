@@ -14,7 +14,7 @@ COUNTY_NAME_INDEX = 5
 SIZE_RANK_INDEX = 6
 PERCENT_HOMES_VALUES_DATA_MIN_INDEX = 7
 
-INSERT_PERCENT_HOMES_VALUES_TEMPLATE = "INSERT INTO {0} (zip_id, date_time, price) VALUES ({1}, \"{2}\", {3});"
+INSERT_PERCENT_HOMES_VALUES_TEMPLATE = "INSERT INTO {0} (zip_id, date_time, percent) VALUES ({1}, \"{2}\", {3});"
 DELETE_PERCENT_HOMES_VALUES_TEMPLATE = "DELETE FROM {0};"
 
 
@@ -25,7 +25,7 @@ class PercentHomesValuesIncDecDAO:
         db_conn = DatabaseManager.get_connection()
         cursor = db_conn.cursor()
 
-        # delete median median price records across all tables
+        # delete percent homes values records across all tables
         cursor.execute(DELETE_PERCENT_HOMES_VALUES_TEMPLATE.format(PERCENT_HOMES_VALUES_INCREASING_TABLE))
         cursor.execute(DELETE_PERCENT_HOMES_VALUES_TEMPLATE.format(PERCENT_HOMES_VALUES_DECREASING_TABLE))
 
@@ -73,13 +73,13 @@ class PercentHomesValuesIncDecDAO:
             city = self.city_dao.insert_data(county.county_id, metro.metro_id, state.state_id, city_data)
             zip_code = self.zip_dao.insert_data(city.city_id, county.county_id, metro.metro_id, state.state_id, zip_data)
 
-            # insert median listing price records
+            # insert percent homes values records
             for date_time, percent_home_value in zip(date_fields, percent_home_value_data):
                 # format date
                 date_time = date_time.split('-')
                 date_time = date(int(date_time[0]), int(date_time[1]), 1)  # MM/1/YYYY
 
-                # format median listing price
+                # format percent homes values
                 if percent_home_value == '':
                     percent_home_value = "NULL"
                 else:
@@ -108,7 +108,7 @@ class PercentHomesValuesIncDecDAO:
         self.insert_percent_homes_values_data(PERCENT_HOMES_VALUES_DECREASING_TABLE, data_file)
 
     def insert_data(self):
-        # insert median price cut data
+        # insert percent homes values data
         self.insert_percent_homes_values_increasing_data()
 
         self.insert_percent_homes_values_decreasing_data()
