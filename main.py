@@ -12,6 +12,7 @@ from listing_price_cut_season_adj_home_type import ListingPriceCutSeasonAdjHomeT
 from median_price_cut_dollar_home_type import MedianPriceCutDollarHomeTypeDAO
 from median_percent_price_reduction_home_type import MedianPercentPriceReductionHomeTypeDAO
 from median_value_per_sqft_home_type import MedianValuePerSqftHomeTypeDAO;
+from percent_listings_price_reduction_home_type import PercentListingsPriceReductionHomeTypeDAO;
 
 
 if __name__ == "__main__":
@@ -29,7 +30,8 @@ if __name__ == "__main__":
     #listing_price_cut_season_adj_home_type_dao = ListingPriceCutSeasonAdjHomeTypeDAO(state_dao, county_dao, metro_dao, city_dao, zip_dao)
     #median_price_cut_dollar_home_type_dao = MedianPriceCutDollarHomeTypeDAO(state_dao, county_dao, metro_dao,city_dao, zip_dao)
     #median_percent_price_reduction_home_type_dao = MedianPercentPriceReductionHomeTypeDAO(state_dao, county_dao, metro_dao, city_dao, zip_dao)
-    median_value_per_sqft_home_type_dao = MedianValuePerSqftHomeTypeDAO(state_dao, county_dao, metro_dao, city_dao, zip_dao)
+    #median_value_per_sqft_home_type_dao = MedianValuePerSqftHomeTypeDAO(state_dao, county_dao, metro_dao, city_dao, zip_dao)
+    percent_listings_price_reduction_home_type_dao = PercentListingsPriceReductionHomeTypeDAO(state_dao, county_dao, metro_dao, city_dao, zip_dao)
 
     # delete all records
     #state_dao.delete_data()
@@ -45,7 +47,8 @@ if __name__ == "__main__":
     #listing_price_cut_season_adj_home_type_dao.delete_data()
     #median_price_cut_dollar_home_type_dao.delete_data()
     #median_percent_price_reduction_home_type_dao.delete_data()
-    median_value_per_sqft_home_type_dao.delete_data()
+    #median_value_per_sqft_home_type_dao.delete_data()
+    percent_listings_price_reduction_home_type_dao.delete_data()
 
     # insert records
     #median_listing_price_num_bedrooms_dao.insert_data()
@@ -55,5 +58,5 @@ if __name__ == "__main__":
     #listing_price_cut_season_adj_home_type_dao.insert_data()
     #median_price_cut_dollar_home_type_dao.insert_data()
     #median_percent_price_reduction_home_type_dao.insert_data()
-    median_value_per_sqft_home_type_dao.insert_data()
-
+    #median_value_per_sqft_home_type_dao.insert_data()
+    percent_listings_price_reduction_home_type_dao.insert_data()
