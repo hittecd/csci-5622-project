@@ -48,6 +48,8 @@ ALTER TABLE median_percent_price_reduction_all_homes DROP FOREIGN KEY median_per
 ALTER TABLE median_percent_price_reduction_condo DROP FOREIGN KEY median_percent_price_reduction_condo_ibfk_1;
 ALTER TABLE median_percent_price_reduction_sfr DROP FOREIGN KEY median_percent_price_reduction_sfr_ibfk_1;
 
+ALTER TABLE median_value_per_sqft_home_type DROP FOREIGN KEY median_value_per_sqft_home_type_ibfk_1;
+
 # drop tables
 
 DROP TABLE IF EXISTS state;
@@ -151,4 +153,5 @@ source median_listing_price_per_sqft_home_type.sql
 source listing_price_cut_season_adj_home_type.sql
 source median_price_cut_dollar_home_type.sql
 source median_percent_price_reduction_home_type.sql
+source median_value_per_sqft_home_type.sql
 
