@@ -97,17 +97,17 @@ class MedianPercentPriceReductionHomeTypeDAO:
         db_conn.close()
 
     def insert_median_percent_price_reduction_all_homes_data(self):
-        data_file = open("data/Zip_MedianPctOfPriceReduction_AllHomes.csv", "r")
+        data_file = open("data/zillow/Zip_MedianPctOfPriceReduction_AllHomes.csv", "r")
 
         self.insert_median_percent_price_reduction_data(MEDIAN_PERCENT_PRICE_REDUCTION_ALL_HOMES_TABLE, data_file)
 
     def insert_median_percent_price_reduction_condo_data(self):
-        data_file = open("data/Zip_MedianPctOfPriceReduction_Condominum.csv", "r")
+        data_file = open("data/zillow/Zip_MedianPctOfPriceReduction_Condominum.csv", "r")
 
         self.insert_median_percent_price_reduction_data(MEDIAN_PERCENT_PRICE_REDUCTION_CONDO_TABLE, data_file)
 
     def insert_median_percent_price_reduction_sfr_data(self):
-        data_file = open("data/Zip_MedianPctOfPriceReduction_SingleFamilyResidence.csv", "r")
+        data_file = open("data/zillow/Zip_MedianPctOfPriceReduction_SingleFamilyResidence.csv", "r")
 
         self.insert_median_percent_price_reduction_data(MEDIAN_PERCENT_PRICE_REDUCTION_SFR_TABLE, data_file)
 

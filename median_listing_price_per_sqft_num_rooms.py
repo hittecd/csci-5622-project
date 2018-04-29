@@ -101,27 +101,27 @@ class MedianListingPricePerSqftNumBedroomsDAO:
         db_conn.close()
 
     def insert_median_listing_price_per_sqft_one_room_data(self):
-        data_file = open("data/Zip_MedianListingPricePerSqft_1Bedroom.csv", "r")
+        data_file = open("data/zillow/Zip_MedianListingPricePerSqft_1Bedroom.csv", "r")
 
         self.insert_median_listing_price_per_sqft_data(MEDIAN_LISTING_PRICE_PER_SQFT_ONE_ROOM_TABLE, data_file)
 
     def insert_median_listing_price_per_sqft_two_room_data(self):
-        data_file = open("data/Zip_MedianListingPricePerSqft_2Bedroom.csv", "r")
+        data_file = open("data/zillow/Zip_MedianListingPricePerSqft_2Bedroom.csv", "r")
 
         self.insert_median_listing_price_per_sqft_data(MEDIAN_LISTING_PRICE_PER_SQFT_TWO_ROOM_TABLE, data_file)
 
     def insert_median_listing_price_per_sqft_three_room_data(self):
-        data_file = open("data/Zip_MedianListingPricePerSqft_3Bedroom.csv", "r")
+        data_file = open("data/zillow/Zip_MedianListingPricePerSqft_3Bedroom.csv", "r")
 
         self.insert_median_listing_price_per_sqft_data(MEDIAN_LISTING_PRICE_PER_SQFT_THREE_ROOM_TABLE, data_file)
 
     def insert_median_listing_price_per_sqft_four_room_data(self):
-        data_file = open("data/Zip_MedianListingPricePerSqft_4Bedroom.csv", "r")
+        data_file = open("data/zillow/Zip_MedianListingPricePerSqft_4Bedroom.csv", "r")
 
         self.insert_median_listing_price_per_sqft_data(MEDIAN_LISTING_PRICE_PER_SQFT_FOUR_ROOM_TABLE, data_file)
 
     def insert_median_listing_price_per_sqft_five_plus_room_data(self):
-        data_file = open("data/Zip_MedianListingPricePerSqft_5BedroomOrMore.csv", "r")
+        data_file = open("data/zillow/Zip_MedianListingPricePerSqft_5BedroomOrMore.csv", "r")
 
         self.insert_median_listing_price_per_sqft_data(MEDIAN_LISTING_PRICE_PER_SQFT_FIVE_PLUS_ROOM_TABLE, data_file)
 

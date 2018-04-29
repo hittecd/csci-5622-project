@@ -42,7 +42,7 @@ class MedianValuePerSqftHomeTypeDAO:
         self.zip_dao = zip_dao
 
     def insert_data(self):
-        data_file = open("data/Zip_MedianValuePerSqft_AllHomes.csv", "r")
+        data_file = open("data/zillow/Zip_MedianValuePerSqft_AllHomes.csv", "r")
 
         # get connection to database
         db_conn = DatabaseManager.get_connection()

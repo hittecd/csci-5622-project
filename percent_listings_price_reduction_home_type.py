@@ -97,17 +97,17 @@ class PercentListingsPriceReductionHomeTypeDAO:
         db_conn.close()
 
     def insert_percent_listings_price_reduction_all_homes_data(self):
-        data_file = open("data/Zip_PctOfListingsWithPriceReductions_AllHomes.csv", "r")
+        data_file = open("data/zillow/Zip_PctOfListingsWithPriceReductions_AllHomes.csv", "r")
 
         self.insert_percent_listings_price_reduction_data(PERCENT_LISTINGS_PRICE_REDUCTION_ALL_HOMES_TABLE, data_file)
 
     def insert_percent_listings_price_reduction_condo_data(self):
-        data_file = open("data/Zip_PctOfListingsWithPriceReductions_Condominum.csv", "r")
+        data_file = open("data/zillow/Zip_PctOfListingsWithPriceReductions_Condominum.csv", "r")
 
         self.insert_percent_listings_price_reduction_data(PERCENT_LISTINGS_PRICE_REDUCTION_CONDO_TABLE, data_file)
 
     def insert_percent_listings_price_reduction_sfr_data(self):
-        data_file = open("data/Zip_PctOfListingsWithPriceReductions_SingleFamilyResidence.csv", "r")
+        data_file = open("data/zillow/Zip_PctOfListingsWithPriceReductions_SingleFamilyResidence.csv", "r")
 
         self.insert_percent_listings_price_reduction_data(PERCENT_LISTINGS_PRICE_REDUCTION_SFR_TABLE, data_file)
 

@@ -99,22 +99,22 @@ class MedianListingPricePerSqftHomeTypeDAO:
         db_conn.close()
 
     def insert_median_listing_price_per_sqft_all_homes_data(self):
-        data_file = open("data/Zip_MedianListingPricePerSqft_AllHomes.csv", "r")
+        data_file = open("data/zillow/Zip_MedianListingPricePerSqft_AllHomes.csv", "r")
 
         self.insert_median_listing_price_per_sqft_data(MEDIAN_LISTING_PRICE_PER_SQFT_ALL_HOMES_TABLE, data_file)
 
     def insert_median_listing_price_per_sqft_condo_data(self):
-        data_file = open("data/Zip_MedianListingPricePerSqft_CondoCoop.csv", "r")
+        data_file = open("data/zillow/Zip_MedianListingPricePerSqft_CondoCoop.csv", "r")
 
         self.insert_median_listing_price_per_sqft_data(MEDIAN_LISTING_PRICE_PER_SQFT_CONDO_TABLE, data_file)
 
     def insert_median_listing_price_per_sqft_duplex_triplex_data(self):
-        data_file = open("data/Zip_MedianListingPricePerSqft_DuplexTriplex.csv", "r")
+        data_file = open("data/zillow/Zip_MedianListingPricePerSqft_DuplexTriplex.csv", "r")
 
         self.insert_median_listing_price_per_sqft_data(MEDIAN_LISTING_PRICE_PER_SQFT_DUPLEX_TRIPLEX_TABLE, data_file)
 
     def insert_median_listing_price_per_sqft_sfr_data(self):
-        data_file = open("data/Zip_MedianListingPricePerSqft_Sfr.csv", "r")
+        data_file = open("data/zillow/Zip_MedianListingPricePerSqft_Sfr.csv", "r")
 
         self.insert_median_listing_price_per_sqft_data(MEDIAN_LISTING_PRICE_PER_SQFT_SFR_TABLE, data_file)
 

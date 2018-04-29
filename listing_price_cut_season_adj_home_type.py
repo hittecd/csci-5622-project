@@ -97,17 +97,17 @@ class ListingPriceCutSeasonAdjHomeTypeDAO:
         db_conn.close()
 
     def insert_listing_price_cut_season_adj_all_homes_data(self):
-        data_file = open("data/Zip_Listings_PriceCut_SeasAdj_AllHomes.csv", "r")
+        data_file = open("data/zillow/Zip_Listings_PriceCut_SeasAdj_AllHomes.csv", "r")
 
         self.insert_listing_price_cut_season_adj_data(LISTING_PRICE_CUT_ALL_HOMES_TABLE, data_file)
 
     def insert_listing_price_cut_season_adj_condo_data(self):
-        data_file = open("data/Zip_Listings_PriceCut_SeasAdj_Condominum.csv", "r")
+        data_file = open("data/zillow/Zip_Listings_PriceCut_SeasAdj_Condominum.csv", "r")
 
         self.insert_listing_price_cut_season_adj_data(LISTING_PRICE_CUT_CONDO_TABLE, data_file)
 
     def insert_listing_price_cut_season_adj_sfr_data(self):
-        data_file = open("data/Zip_Listings_PriceCut_SeasAdj_SingleFamilyResidence.csv", "r")
+        data_file = open("data/zillow/Zip_Listings_PriceCut_SeasAdj_SingleFamilyResidence.csv", "r")
 
         self.insert_listing_price_cut_season_adj_data(LISTING_PRICE_CUT_SFR_TABLE, data_file)
 

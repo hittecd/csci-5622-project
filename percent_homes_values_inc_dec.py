@@ -98,12 +98,12 @@ class PercentHomesValuesIncDecDAO:
         db_conn.close()
 
     def insert_percent_homes_values_increasing_data(self):
-        data_file = open("data/Zip_PctOfHomesIncreasingInValues_AllHomes.csv", "r")
+        data_file = open("data/zillow/Zip_PctOfHomesIncreasingInValues_AllHomes.csv", "r")
 
         self.insert_percent_homes_values_data(PERCENT_HOMES_VALUES_INCREASING_TABLE, data_file)
 
     def insert_percent_homes_values_decreasing_data(self):
-        data_file = open("data/Zip_PctOfHomesDecreasingInValues_AllHomes.csv", "r")
+        data_file = open("data/zillow/Zip_PctOfHomesDecreasingInValues_AllHomes.csv", "r")
 
         self.insert_percent_homes_values_data(PERCENT_HOMES_VALUES_DECREASING_TABLE, data_file)
 

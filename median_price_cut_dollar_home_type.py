@@ -97,17 +97,17 @@ class MedianPriceCutDollarHomeTypeDAO:
         db_conn.close()
 
     def insert_median_price_cut_dollar_all_homes_data(self):
-        data_file = open("data/Zip_Median_PriceCut_Dollar_AllHomes.csv", "r")
+        data_file = open("data/zillow/Zip_Median_PriceCut_Dollar_AllHomes.csv", "r")
 
         self.insert_median_price_cut_dollar_data(MEDIAN_PRICE_CUT_ALL_HOMES_TABLE, data_file)
 
     def insert_median_price_cut_dollar_condo_data(self):
-        data_file = open("data/Zip_Median_PriceCut_Dollar_Condominum.csv", "r")
+        data_file = open("data/zillow/Zip_Median_PriceCut_Dollar_Condominum.csv", "r")
 
         self.insert_median_price_cut_dollar_data(MEDIAN_PRICE_CUT_CONDO_TABLE, data_file)
 
     def insert_median_price_cut_dollar_sfr_data(self):
-        data_file = open("data/Zip_Median_PriceCut_Dollar_SingleFamilyResidence.csv", "r")
+        data_file = open("data/zillow/Zip_Median_PriceCut_Dollar_SingleFamilyResidence.csv", "r")
 
         self.insert_median_price_cut_dollar_data(MEDIAN_PRICE_CUT_SFR_TABLE, data_file)
 
