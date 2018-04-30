@@ -146,12 +146,12 @@ class InventorMeasureDAO:
         db_conn.close()
 
     def insert_inventory_measure_all_homes_data(self):
-        data_file = open("data/InventoryMeasure_Zip_Public.csv", "r")
+        data_file = open("data/zillow/InventoryMeasure_Zip_Public.csv", "r")
 
         self.insert_inventory_measure_data(INVENTORY_MEASURE_TABLE, data_file)
 
     def insert_inventory_measure_condo_data(self):
-        data_file = open("data/InventoryMeasure_SSA_Zip_Public.csv", "r")
+        data_file = open("data/zillow/InventoryMeasure_SSA_Zip_Public.csv", "r")
 
         self.insert_inventory_measure_data(INVENTORY_MEASURE_SSA_TABLE, data_file)
 
